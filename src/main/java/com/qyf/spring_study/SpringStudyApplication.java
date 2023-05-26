@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 
 
-@EnableConfigurationProperties({com.qyf.spring_study.domain.Book.class})
+//@EnableConfigurationProperties({com.qyf.spring_study.domain.Book.class})
 @SpringBootApplication
 public class SpringStudyApplication {
 

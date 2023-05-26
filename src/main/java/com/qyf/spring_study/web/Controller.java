@@ -14,8 +14,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/v1")
 public class Controller {
-    @Autowired
-    private Book book;
+    //@Autowired
+    //private Book book;
     @RequestMapping(value = "/say", method = RequestMethod.GET)
     public String hello(){
         return "Hello Spring Boot";
@@ -54,7 +54,8 @@ public class Controller {
     @GetMapping("/books/{id}/{username:[a-z_]+}")
     public Object getOne(@PathVariable("id") long bid, @PathVariable String username){
 
-        return book;
+        //return book;
+        return null;
     }
 
     @PostMapping("/books")
