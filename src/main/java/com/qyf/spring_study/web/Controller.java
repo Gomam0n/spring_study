@@ -1,5 +1,8 @@
 package com.qyf.spring_study.web;
 
+import com.qyf.spring_study.domain.Book;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -9,8 +12,10 @@ import java.util.Map;
 
 //@org.springframework.stereotype.Controller
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/v1")
 public class Controller {
+    @Autowired
+    private Book book;
     @RequestMapping(value = "/say", method = RequestMethod.GET)
     public String hello(){
         return "Hello Spring Boot";
@@ -48,11 +53,8 @@ public class Controller {
      */
     @GetMapping("/books/{id}/{username:[a-z_]+}")
     public Object getOne(@PathVariable("id") long bid, @PathVariable String username){
-        System.out.println(bid + username);
-        Map<String, Object> map = new HashMap<>();
-        map.put("name", "hello");
-        map.put("age", 18);
-        return map;
+
+        return book;
     }
 
     @PostMapping("/books")

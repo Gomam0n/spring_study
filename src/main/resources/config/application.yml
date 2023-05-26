@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: dev
+
+book:
+  name: bookname
+  author: bookauthor
+  isbn: ${random.uuid}
+  description: ${book.name}, is nice!
