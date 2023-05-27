@@ -4,6 +4,7 @@ import com.qyf.spring_study.domain.Book;
 import com.qyf.spring_study.domain.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -58,5 +59,33 @@ public class BookService {
 
     public List<Book> findByJPQL(int len){
         return bookRepository.findByJPQL(len);
+    }
+
+    /**
+     * It is required to add transactional annotation when using update/delete.
+     * Transactional here will override transactional in book repository.
+     * @param status
+     * @param id
+     * @return
+     */
+    @Transactional
+    public int updateByJPQL(int status, long id){
+        return bookRepository.updateByJPQL(status,id);
+    }
+
+    /**
+     * Test transactional operations
+     * @param status
+     * @param id
+     * @param uid
+     * @return
+     */
+    //@Transactional
+    public int deleteAndUpdate(int status, long id, long uid){
+        int dCount = bookRepository.deleteByJPQL(id);
+
+        int uCount = bookRepository.updateByJPQL(status, uid);
+
+        return dCount + uCount;
     }
 }

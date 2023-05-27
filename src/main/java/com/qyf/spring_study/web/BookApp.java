@@ -77,6 +77,12 @@ public class BookApp {
         // return bookService.findByAuthorAndStatus(author, status);
         return bookService.findByJPQL(len);
     }
+    @PostMapping("/books/update")
+    public int updateBy(@RequestParam int status, @RequestParam long id, @RequestParam long uid){
+        //return bookService.updateByJPQL(status, id);
+        return bookService.deleteAndUpdate(status, id, uid);
+    }
+
 
     @PostMapping("/books/ends")
     public List<Book> findByDescriptionEndsWith(@RequestParam String des){
