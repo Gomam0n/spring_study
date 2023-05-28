@@ -12,6 +12,19 @@
 
     <div class="container">
         <h1>Books List</h1>
+
+        <!--TODO:
+            Edit the format to enable the alert disapper
+         -->
+
+
+        <div class="alert alert-success alert-dismissible" th:unless="${#strings.isEmpty(message)}">
+            <a href="#" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></a>
+            <strong>Congratulations! </strong>
+            <span th:text="${message}">information submitted successfully</span>
+        </div>
+        <p><a href="./input.html" th:href="@{/books/input}" class="btn btn-primary">New</a> </p>
+
         <table class="table table-bordered">
             <thead>
             <tr>
@@ -20,6 +33,7 @@
                 <th>Author</th>
                 <th>Description</th>
                 <th>Status</th>
+                <th>Operation</th>
             </tr>
             </thead>
             <tbody>
@@ -44,6 +58,9 @@
                     <span th:case="0"> Already read</span>
                     <span th:case="1"> Reading</span>
                     <span th:case="2"> Want to read</span>
+                </td>
+                <td>
+                    <a href="#" th:href="@{/books/{id}/input(id=${book.id})}">Update</a>
                 </td>
             </tr>
             </tbody>
